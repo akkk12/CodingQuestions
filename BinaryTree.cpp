@@ -162,7 +162,28 @@ if(!q.empty()){
 
 }
 
+class Pair {
+public:
+	int height ;
+	int diameter ;
+};
 
+Pair fastDiameter(node *root){
+	Pair p ;
+	if(root == NULL){
+		p.diameter = p.height = 0 ;
+		return p;
+	}
+Pair left = fastDiameter(root->left);
+
+Pair right = fastDiameter(root->right);
+
+p.height = max(left.height,right.height) + 1;
+p.diameter = max(left.height + right.height , max(left.diameter , right.diameter));
+return p;
+
+
+}
 int main(){
 	node *root = build();
 	/*PrePrint(root);
@@ -177,5 +198,8 @@ bfs(root);
 cout<<"Count of nodes "<<countNode(root);
 cout<<"\nSum of nodes is "<<sumOfNodes(root);
 */
-cout<<diameter(root);
+//cout<<diameter(root);
+	Pair p = fastDiameter(root);
+	cout<<p.height<<endl;
+	cout<<p.diameter<<endl;
 }
