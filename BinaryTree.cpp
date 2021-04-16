@@ -115,6 +115,22 @@ return root->data + s1 +s2 ;
 
 }
 
+
+int diameter(node *root){
+	if(root == NULL){
+		return 0 ;
+	}
+    int h1 = height(root->left);
+    int h2 = height(root->right);
+    int op1 = h1 + h2 ;
+    int op2 = diameter(root->left);
+    int op3 = diameter(root->right);
+    return max(op1,max(op2,op3));
+
+}
+
+
+
 void bfs(node *root){
 
 	queue<node*> q ;
@@ -155,9 +171,11 @@ int main(){
 	cout<<endl;
 	PostPrint(root);
 	cout<<endl;*/
-printAllLevel(root);
+/*printAllLevel(root);
 cout<<endl;
 bfs(root);
 cout<<"Count of nodes "<<countNode(root);
 cout<<"\nSum of nodes is "<<sumOfNodes(root);
+*/
+cout<<diameter(root);
 }
