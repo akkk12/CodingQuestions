@@ -1,5 +1,5 @@
+//O(n^2)
 
-/*
 class Node {
     public:
         int data;
@@ -11,7 +11,7 @@ class Node {
             right = NULL;
         }
 };
-*/
+
 int height (Node *root){
     if(root == NULL){
         return 0;
